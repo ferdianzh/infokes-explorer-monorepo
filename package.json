@@ -5,7 +5,10 @@
   "private": true,
   "scripts": {
     "dev:server": "bun run --filter ./packages/server dev",
-    "dev:client": "bun run --filter ./packages/client dev"
+    "dev:client": "bun run --filter ./packages/client dev",
+    "db:migrate": "bun run --filter ./packages/server db:migrate",
+    "db:push": "bun run --filter ./packages/server db:push",
+    "db:generate": "bun run --filter ./packages/server db:generate"
   },
   "devDependencies": {
     "@types/bun": "latest"

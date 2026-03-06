@@ -1,8 +1,13 @@
 import { Elysia } from "elysia";
+import { itemsController } from "./api/items/items.controller";
 
-const app = new Elysia().get("/", () => "Hello Elysia").listen(3001);
+export const app = new Elysia()
+  .get("/", () => "Hello Elysia")
+  .use(itemsController);
 
-console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`,
-);
-// test change
+if (import.meta.main) {
+  app.listen(3001);
+  console.log(
+    `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`,
+  );
+}
