@@ -1,0 +1,19 @@
+{
+  "name": "infokes-explorer-monorepo",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev:server": "bun run --filter ./packages/server dev",
+    "dev:client": "bun run --filter ./packages/client dev"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
