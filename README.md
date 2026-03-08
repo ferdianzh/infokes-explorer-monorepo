@@ -20,7 +20,9 @@ bun run dev:server
 bun run dev:client
 ```
 
-Server: localhost:3001
-Client: localhost:5173/explorer
+Open:
+
+- Server: localhost:3001
+- Client: localhost:3000/explorer
 
 This project was created using `bun init` in bun v1.3.10. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
