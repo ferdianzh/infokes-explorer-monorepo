@@ -1,13 +1,7 @@
+import { ItemQuery } from "shared";
 import { Item } from "../../generated/prisma/client";
 import { ItemCreateDto, ItemUpdateDto } from "./items.dto";
 import { ItemsRepository } from "./items.repository";
-
-interface ItemQuery {
-  order?: "name" | "createdAt" | "updatedAt";
-  sort?: "asc" | "desc";
-  search?: string;
-  parent?: number;
-}
 
 export class ItemsService {
   constructor(private itemsRepository = new ItemsRepository()) {}
@@ -22,7 +16,13 @@ export class ItemsService {
     }
   }
 
-  async findAll({ order, sort, search, parent }: ItemQuery): Promise<Item[]> {
+  async findAll({
+    order,
+    sort,
+    search,
+    parent,
+    type,
+  }: ItemQuery): Promise<Item[]> {
     const parentId = parent ? Number(parent) : null;
     try {
       const data = await this.itemsRepository.findAll({
@@ -31,6 +31,7 @@ export class ItemsService {
             contains: search,
           },
           parentId,
+          type,
         },
         orderBy: order && {
           [order]: sort,
